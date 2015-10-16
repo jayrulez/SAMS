@@ -12,6 +12,10 @@ namespace WebApi.Infrastructure.DataStores
 {
     public class UserStore : EntityStore, IUserStore<User, int>, IQueryableUserStore<User, int>, IUserPasswordStore<User, int>
     {
+        public UserStore()
+        {
+        }
+
         public IQueryable<User> Users
         {
             get

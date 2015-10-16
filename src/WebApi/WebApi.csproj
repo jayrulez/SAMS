@@ -182,6 +182,10 @@
     <Compile Include="Infrastructure\Managers\LocationManager.cs" />
     <Compile Include="Infrastructure\Managers\RefreshTokenManager.cs" />
     <Compile Include="Infrastructure\Managers\UserManager.cs" />
+    <Compile Include="Migrations\201510162335002_Initial.cs" />
+    <Compile Include="Migrations\201510162335002_Initial.Designer.cs">
+      <DependentUpon>201510162335002_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApiClientType.cs" />
     <Compile Include="Models\AssetAssignmentModel.cs" />
@@ -220,6 +224,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201510162335002_Initial.resx">
+      <DependentUpon>201510162335002_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

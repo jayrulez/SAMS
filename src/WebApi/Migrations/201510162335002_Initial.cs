@@ -96,7 +96,7 @@ namespace WebApi.Migrations
                         Value = c.String(),
                     })
                 .PrimaryKey(t => new { t.AssetFieldId, t.AssetId })
-                .ForeignKey("dbo.Assets", t => t.AssetId, cascadeDelete: true)
+                .ForeignKey("dbo.Assets", t => t.AssetId)
                 .ForeignKey("dbo.AssetFields", t => t.AssetFieldId, cascadeDelete: true)
                 .Index(t => t.AssetFieldId)
                 .Index(t => t.AssetId);

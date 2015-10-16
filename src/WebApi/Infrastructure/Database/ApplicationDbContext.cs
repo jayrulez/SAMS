@@ -32,5 +32,16 @@ namespace WebApi.Infrastructure.Database
         public DbSet<Location> Locations { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AssetFieldValue>()
+                .HasRequired(a => a.Asset)
+                .WithMany(a => a.AssetFieldValues)
+                .HasForeignKey(a => a.AssetId)
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
