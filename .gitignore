@@ -1,0 +1,9 @@
+WebApi/bin/*
+WebApi/obj/*
+WebApi.Tests/bin/*
+WebApi.Tests/obj/*
+WebClient/bin/*
+WebClient/obj/*
+.vs/*
+packages/*
+*.user
