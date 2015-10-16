@@ -21,6 +21,7 @@ namespace WebApi.Infrastructure.Database
             return new ApplicationDbContext();
         }
 
+        public DbSet<ApiClient> ApiClients { get; set; }
         public DbSet<AssetAssignment> AssetAssignments { get; set; }
         public DbSet<AssetCategory> AssetCategories { get; set; }
         public DbSet<AssetField> AssetFields { get; set; }
@@ -29,6 +30,7 @@ namespace WebApi.Infrastructure.Database
         public DbSet<CodeTable> CodeTables { get; set; }
         public DbSet<CodeTableValue> CodeTableValues { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }

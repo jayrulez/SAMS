@@ -7,7 +7,7 @@ namespace WebApi.Infrastructure.Managers
 {
     public class EntityManager : IDisposable
     {
-        public void Dispose()
+        public virtual void Dispose()
         {
             throw new NotImplementedException();
         }

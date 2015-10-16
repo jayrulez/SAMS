@@ -9,5 +9,10 @@ namespace WebApi.Infrastructure.Managers
     public class CodeTableManager: EntityManager
     {
         internal CodeTableStore _store;
+
+        public CodeTableManager()
+        {
+            _store = new CodeTableStore();
+        }
     }
 }

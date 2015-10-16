@@ -9,5 +9,10 @@ namespace WebApi.Infrastructure.Managers
     public class LocationManager : EntityManager
     {
         internal LocationStore _store;
+
+        public LocationManager()
+        {
+            _store = new LocationStore();
+        }
     }
 }

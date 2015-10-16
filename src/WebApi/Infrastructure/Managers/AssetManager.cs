@@ -9,5 +9,10 @@ namespace WebApi.Infrastructure.Managers
     public class AssetManager : EntityManager
     {
         internal AssetStore _store;
+
+        public AssetManager()
+        {
+            _store = new AssetStore();
+        }
     }
 }
