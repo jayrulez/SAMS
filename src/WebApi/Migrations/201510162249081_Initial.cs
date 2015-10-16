@@ -3,10 +3,24 @@ namespace WebApi.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.ApiClients",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Secret = c.String(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 100),
+                        ApiClientType = c.Int(nullable: false),
+                        Active = c.Boolean(nullable: false),
+                        RefreshTokenLifeTime = c.Int(nullable: false),
+                        AllowedOrigin = c.String(maxLength: 100),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.AssetAssignments",
                 c => new
@@ -138,6 +152,19 @@ namespace WebApi.Migrations
                 .Index(t => t.CodeTableId)
                 .Index(t => t.Value, unique: true);
             
+            CreateTable(
+                "dbo.RefreshTokens",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Subject = c.String(nullable: false, maxLength: 50),
+                        ApiClientId = c.String(nullable: false, maxLength: 50),
+                        IssuedUtc = c.DateTime(nullable: false),
+                        ExpiresUtc = c.DateTime(nullable: false),
+                        ProtectedTicket = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
@@ -171,6 +198,7 @@ namespace WebApi.Migrations
             DropIndex("dbo.AssetAssignments", new[] { "UserId" });
             DropIndex("dbo.AssetAssignments", new[] { "LocationId" });
             DropIndex("dbo.AssetAssignments", new[] { "AssetId" });
+            DropTable("dbo.RefreshTokens");
             DropTable("dbo.CodeTableValues");
             DropTable("dbo.CodeTables");
             DropTable("dbo.Locations");
@@ -180,6 +208,7 @@ namespace WebApi.Migrations
             DropTable("dbo.AssetCategories");
             DropTable("dbo.Assets");
             DropTable("dbo.AssetAssignments");
+            DropTable("dbo.ApiClients");
         }
     }
 }
