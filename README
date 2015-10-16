@@ -1,0 +1,33 @@
+Stationery(Consumable) and Asset Management System (SAMS)
+
+SAMS is a system for managing/tracking assets and consumable throughtout various locations within a company.
+
+Features currently being worked on includes:
+
+Administration Features
+	- Create and update locations
+	- Create and update users
+	- Assign users to locations
+	- Create and update asset categories
+	- Define custom asset fields per category
+	- Create and update consumable categories
+	- Define custom consumable fields per category
+	- Define validation rules per custom field
+
+General Features
+	- Create and update asset
+	- Generate printable asset tag
+	- Assign asset to location and or user
+	- Unassign asset
+	- Asset history
+	- Create and update consumable
+	- Setup consumable low level threshold
+	- Consumable request
+
+Reporting
+	- Asset reports
+		- Assets by location
+		- Assets by user
+	- Consumable reports
+		- Consumable usage
+	
