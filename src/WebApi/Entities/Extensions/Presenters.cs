@@ -8,6 +8,17 @@ namespace WebApi.Entities
 {
     public static class Presenters 
     {
+        public static AssetCategoryPresenter ToPresenter(this AssetCategory source)
+        {
+            var destination = new AssetCategoryPresenter();
+
+            destination.Id = source.Id;
+            destination.Name = source.Name;
+            destination.Description = source.Description;
+
+            return destination;
+        }
+
         public static UserPresenter ToPresenter(this User source)
         {
             var destination = new UserPresenter();

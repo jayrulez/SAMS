@@ -25,6 +25,12 @@ namespace WebApi.Entities
         [Required, MaxLength(100), Index("UniqueAsset", IsUnique = true, Order = 2)]
         public string Name { get; set; }
 
+        public DateTime? PurchaseDate { get; set; }
+
+        public Decimal? PurchaseCost { get; set; }
+
+        public string Comments { get; set; }
+
         public virtual AssetCategory AssetCategory { get; set; }
         public virtual ICollection<AssetFieldValue> AssetFieldValues { get; set; }
         public virtual ICollection<AssetAssignment> AssetAssignments { get; set; }

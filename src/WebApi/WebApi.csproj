@@ -164,6 +164,7 @@
     <Compile Include="Helpers\DataQueryResult.cs" />
     <Compile Include="Helpers\DataManipulationResult.cs" />
     <Compile Include="Helpers\Error.cs" />
+    <Compile Include="Helpers\FieldValueModelBinder.cs" />
     <Compile Include="Helpers\IResponse.cs" />
     <Compile Include="Helpers\Response.cs" />
     <Compile Include="Infrastructure\Database\ApplicationDbContext.cs" />
@@ -187,6 +188,10 @@
     <Compile Include="Migrations\201510162335002_Initial.Designer.cs">
       <DependentUpon>201510162335002_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510170253300_migration2.cs" />
+    <Compile Include="Migrations\201510170253300_migration2.Designer.cs">
+      <DependentUpon>201510170253300_migration2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApiClientType.cs" />
     <Compile Include="Models\AssetAssignmentModel.cs" />
@@ -200,6 +205,8 @@
     <Compile Include="Models\CodeTableValueModel.cs" />
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Presenters\AssetCategoryPresenter.cs" />
+    <Compile Include="Presenters\AssetPresenter.cs" />
     <Compile Include="Presenters\LocationPresenter.cs" />
     <Compile Include="Presenters\UserPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -231,6 +238,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201510162335002_Initial.resx">
       <DependentUpon>201510162335002_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510170253300_migration2.resx">
+      <DependentUpon>201510170253300_migration2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

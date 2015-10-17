@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using WebApi.Entities;
 
@@ -14,6 +15,15 @@ namespace WebApi.Infrastructure.DataStores
             {
                 return _dbContext.AssetCategories;
             }
+        }
+
+        public Task CreateAsync(AssetCategory entity)
+        {
+            _dbContext.AssetCategories.Add(entity);
+
+            _dbContext.SaveChangesAsync();
+
+            return Task.FromResult(0);
         }
     }
 }
