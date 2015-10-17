@@ -40,32 +40,28 @@ namespace WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var request = Request;
-            var requestContext = RequestContext;
-            var httpContext = request.GetRequestContext();
-
             var entity = new AssetCategory
             {
                 Name = model.Name,
                 Description = model.Description
             };
 
-            //foreach (var assetFieldModel in model.AssetFields)
-            //{
-            //    if (assetFieldModel != null)
-            //    {
-                    //var assetField = new AssetField
-                    //{
-                    //    FieldType = assetFieldModel.FieldType,
-                    //    Name = assetFieldModel.Name,
-                    //    Description = assetFieldModel.Description,
-                    //    Position = assetFieldModel.Position,
-                    //    ValidationRules = assetFieldModel.ValidationRules,
-                    //};
+            foreach (var assetFieldModel in model.AssetFields)
+            {
+                if (assetFieldModel != null)
+                {
+                    var assetField = new AssetField
+                    {
+                        FieldType = assetFieldModel.FieldType,
+                        Name = assetFieldModel.Name,
+                        Description = assetFieldModel.Description,
+                        Position = assetFieldModel.Position,
+                        ValidationRules = assetFieldModel.ValidationRules,
+                    };
 
-                    //entity.AssetFields.Add(assetField);
-            //    }
-            //}
+                    entity.AssetFields.Add(assetField);
+                }
+            }
 
             var response = await _manager.CreateAsync(entity);
 

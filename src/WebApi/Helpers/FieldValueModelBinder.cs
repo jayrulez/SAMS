@@ -47,6 +47,9 @@ namespace WebApi.Helpers
             else if (actionContext.Request.Content.IsFormData())
             {                
                 var bodyString = actionContext.Request.Content.ReadAsStringAsync().Result;
+
+                bodyString =  HttpUtility.UrlDecode(bodyString);
+
                 try
                 {
                     kvps = ConvertToKvps(bodyString);
