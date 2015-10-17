@@ -21,16 +21,23 @@ namespace WebApi.Migrations
 
         protected override void Seed(WebApi.Infrastructure.Database.ApplicationDbContext context)
         {
-            context.ApiClients.AddRange(BuildClientsList());
+            if(!(context.ApiClients.Count() > 0))
+            {
+                context.ApiClients.AddRange(BuildClientsList());
 
-            context.SaveChanges();
+                context.SaveChanges();
+            }
 
             var userManager = new UserManager(new UserStore());
 
-            var result = userManager.CreateAsync(new User
+            if(!(userManager.Users.Count() > 0))
             {
-                UserName = "admin",
-            }, "password");
+                var result = userManager.CreateAsync(new User
+                {
+                    UserName = "admin",
+                }, "password");
+            }
+
         }
 
         private static List<ApiClient> BuildClientsList()
