@@ -42,5 +42,23 @@ namespace WebApi.Infrastructure.Managers
 
             return response;
         }
+
+        public async Task<IResponse<bool>> UpdateAsync(AssetCategory entity)
+        {
+            var response = new Response<bool>();
+
+            try
+            {
+                await _store.UpdateAsync(entity);
+
+                response.Result = true;
+            }
+            catch (Exception ex)
+            {
+                response.Error = new Error(ex.Message);
+            }
+
+            return response;
+        }
     }
 }

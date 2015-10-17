@@ -13,12 +13,26 @@ namespace WebApi.Models
     {
         public CreateAssetCategoryModel()
         {
-            AssetFields = new List<AssetFieldModel>();
+            AssetFields = new List<CreateAssetFieldModel>();
         }
 
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public List<AssetFieldModel> AssetFields { get; set; }
+        public List<CreateAssetFieldModel> AssetFields { get; set; }
+    }
+
+    public class EditAssetCategoryModel
+    {
+        public EditAssetCategoryModel()
+        {
+            AssetFields = new List<EditAssetFieldModel>();
+        }
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        public List<EditAssetFieldModel> AssetFields { get; set; }
     }
 }

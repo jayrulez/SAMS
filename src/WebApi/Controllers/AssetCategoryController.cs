@@ -50,6 +50,13 @@ namespace WebApi.Controllers
             {
                 if (assetFieldModel != null)
                 {
+                    Validate(assetFieldModel);
+
+                    if(!ModelState.IsValid)
+                    {
+                        return BadRequest(ModelState);
+                    }
+
                     var assetField = new AssetField
                     {
                         FieldType = assetFieldModel.FieldType,
@@ -64,6 +71,64 @@ namespace WebApi.Controllers
             }
 
             var response = await _manager.CreateAsync(entity);
+
+            if (!response.IsSuccessful)
+            {
+                ModelState.AddModelError("", response.Error.Message);
+
+                return BadRequest(ModelState);
+            }
+
+            return Ok(entity.ToPresenter());
+        }
+
+        [Route("update")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Update([ModelBinder(typeof(FieldValueModelBinder))] EditAssetCategoryModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var entity = new AssetCategory
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Description = model.Description
+            };
+
+            foreach (var assetFieldModel in model.AssetFields)
+            {
+                if (assetFieldModel != null)
+                {
+                    Validate(assetFieldModel);
+
+                    if (!ModelState.IsValid)
+                    {
+                        return BadRequest(ModelState);
+                    }
+
+                    var assetField = new AssetField
+                    {
+                        AssetCategoryId = model.Id,
+                        FieldType = assetFieldModel.FieldType,
+                        Name = assetFieldModel.Name,
+                        Description = assetFieldModel.Description,
+                        Position = assetFieldModel.Position,
+                        ValidationRules = assetFieldModel.ValidationRules,
+                    };
+
+                    if(assetFieldModel.Id > 0)
+                    {
+                        assetField.Id = assetFieldModel.Id;
+                    }
+
+                    entity.AssetFields.Add(assetField);
+                }
+            }
+
+            var response = await _manager.UpdateAsync(entity);
 
             if (!response.IsSuccessful)
             {
